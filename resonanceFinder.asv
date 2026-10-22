@@ -1,0 +1,37 @@
+t = scope57{:,1};
+u = scope57{:,2};
+y = scope57{:,3};
+
+maxim = 0;
+Mr = 0;
+j = 1;
+indexY = zeros(500);
+indexU = zeros(500);
+
+for i = 2 : 999
+    if(y(i) > y(i+1))
+        if(y(i-1) < y(i))
+            indexY(j) = i;
+            j = j + 1;
+        end
+    end
+end
+
+j = 1;
+
+for i = 2 : 999
+    if(u(i) > u(i+1))
+        if(u(i-1) < u(i))
+            indexU(j) = i;
+            j = j + 1;
+        end
+    end
+end
+
+for i = 1 : j-1
+    maxim = (y(indexY(i)) - y(indexY(i+1)))/(u(indexU(i)) - u(indexU(i+1)));
+    if(maxim > Mr)
+        Mr = maxim;
+    end
+end
+Mr
